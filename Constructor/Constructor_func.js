@@ -320,10 +320,13 @@ $("#next_2").on("click", function () {
   let img_1 = "";
   var lastIMG = [];
   var Constructor_img = document.querySelectorAll(".Constructor_img img");
-
+var i = 0;
   Constructor_img.forEach((element) => {
+    
     lastIMG.push(element.src);
-    img_1 += `<img src=\"${element.src}\" alt=\"\">`;
+    img_1 += `<img src=\"${element.src}\" id=\"imgLast${i}\" alt=\"\">`;
+
+    i++;
   });
 
   $(".Constructor_result_img").html(img_1);
@@ -434,16 +437,54 @@ $("#next_3").on("click", function () {
 
 $('#sendFormBTN').on('click', function () {
 
-let allInfo = document.getElementById('allInfo');
+
+
+var imgLenght = $(".Constructor_result_img img").length;
+var lastImg = [];
+/*for(let i = 0; i < imgLenght; i++){
+  lastImg += $(`#imgLast${i}`).src;
+  
+}*/
+lastImg = $(`#imgLast0`).attr('src');
+console.log(lastImg);
+
+
+
+
+
+
+if(glassOption_1 == ""){
+  glassOption_1 = "нет";
+}else{
+  glassOption_1 = "да";
+}
+
+if(glassOption_2 == ""){
+  glassOption_2 = "нет";
+}else{
+  glassOption_2 = "да";
+}
+
+if(addOption_text == ""){
+  addOption_text = "нет";
+}
 
 console.log(Profile_type);
 
   $.ajax({
-    url: "./mail.php",
+    url: "./mail_constructor.php",
     type: "POST",
     cache: false,
     data: {
+      lastImg: lastImg,
       Profile: Profile_type,
+      Double_glazed_windows: Double_glazed_windows,
+      glassOption_1: glassOption_1,
+      glassOption_2: glassOption_2,
+      Profile_color: Profile_color,
+      Otliv_Size: Otliv_Size,
+      Windowsill_Size: Windowsill_Size,
+      addOption_text: addOption_text
     },
     beforeSend: function() {
         $("#sendFormBTN").prop("disabled", true);

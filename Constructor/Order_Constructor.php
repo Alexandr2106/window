@@ -226,7 +226,7 @@
         <button class="button_back" id="back_3">Назад</button>
         
         <p>Отправить на расчёт:</p><br>
-        <label>Номер телефона:</label><input type="tel" class="_customerTel _customerInfo _req" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="Пример: 928-116-78-88" required>
+        <label>Номер телефона:</label><input type="tel" class="_customerTel _customerInfo _req" id="phone" name="phone" value = "" pattern="[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}" placeholder="Пример: 928-116-78-88" required>
         <br>
         <label>Имя:</label><input type="text" class="_customerName _customerInfo _req" name="customer_name" placeholder="Пример: Иван" required>
     <input type="button" value="Отправить" id="sendFormBTN">

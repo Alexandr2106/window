@@ -1,5 +1,5 @@
 <?php
-$mysql = new mysqli('localhost','Polovyanov','71323245','diplom_pws');
+$mysql = new mysqli('localhost','root','','pws_db');
     $mysql->query("SET NAMES utf8");
     $mysql->query("SET CHARACTER SET utf8");
     $mysql->query("SET character_set_client = utf8");

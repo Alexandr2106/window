@@ -11,16 +11,16 @@ $Profile_color = $_POST['Profile_color'];
 $Otliv_Size = $_POST['Otliv_Size'];
 $Windowsill_Size = $_POST['Windowsill_Size'];
 $addOption_text = $_POST['addOption_text'];
-$lastImg = $_POST['lastImg'];
-
+$lastImg = "./img/win_gluh.png";
+    
 
 
 
 
 $title = "Заявка на консультацию";
-$body = "
+$body = '
 <h2>Новое письмо</h2>
-<b>Всё:</b> <img src=\"".$lastImg."\" id=\"imgLast0\" alt=\"\"><br>
+<b>Всё:</b> <img src="cid:./img/win_gluh.png"><br>
 <b>Профиль:</b> $Profile<br>
 <b>Стеклопакет:</b> $Double_glazed_windows<br>
 <b>Энергосберегающее:</b> $glassOption_1<br>
@@ -29,7 +29,8 @@ $body = "
 <b>Отлив:</b> $Otliv_Size<br>
 <b>Подоконник:</b> $Windowsill_Size<br>
 <b>Другие функции:</b> $addOption_text<br>
-";
+';
+
 
 
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -56,7 +57,9 @@ try {
 // Отправка сообщения
 $mail->isHTML(true);
 $mail->Subject = $title;
-$mail->Body = $body;    
+$mail->Body = $body;  
+$mailer->AddEmbeddedImage($path . DIRECTORY_SEPARATOR . '', './img/win_gluh.png', './img/win_gluh.png', 'base64', 'image/png');
+
 
 // Проверяем отравленность сообщения
 if ($mail->send()) {$result = "success";} 
